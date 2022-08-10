@@ -1,0 +1,58 @@
+{
+  "name": "al_8266_gfx_ili9341",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "",
+  "keywords": "",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/AdriLighting/al_8266_gfx_ili9341.git"
+  },
+  "authors":
+  [
+    {
+      "name": "Grellard Adrien",
+      "email": "grellard.adrien@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "dependencies": [
+    {
+        "owner": "Benoit Blanchon",
+        "name": "ArduinoJson",
+        "version": "https://github.com/bblanchon/ArduinoJson.git"
+    },
+    {
+        "owner": "Adafruit",
+        "name": "Adafruit GFX Library",
+        "version": "https://github.com/adafruit/Adafruit-GFX-Library.git"
+    }, 
+    {
+        "owner": "Adafruit",
+        "name": "Adafruit BusIO",
+        "version": "https://github.com/adafruit/Adafruit_BusIO.git"
+    },     
+    {
+        "owner": "Adafruit",
+        "name": " Adafruit_ILI9341",
+        "version": "https://github.com/AdriLighting/Adafruit_ILI9341.git"
+    }, 
+    {
+        "owner": "oliver",
+        "name": "U8g2_for_Adafruit_GFX",
+        "version": "https://github.com/olikraus/U8g2_for_Adafruit_GFX.git"
+    }, 
+    {
+        "owner": "Spiros Papadimitriou",
+        "name": "XPT2046",
+        "version": "https://github.com/spapadim/XPT2046.git"
+    }, 
+
+      
+  ],
+   
+  "frameworks": "arduino",
+  "platforms": "espressif8266",
+  "headers": "almllib.h"
+}
