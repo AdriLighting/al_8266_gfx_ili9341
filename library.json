@@ -48,6 +48,11 @@
         "name": "XPT2046",
         "version": "https://github.com/spapadim/XPT2046.git"
     }, 
+    {
+        "owner": "oliver",
+        "name": "U8g2_for_Adafruit_GFX",
+        "version": "https://github.com/olikraus/U8g2_for_Adafruit_GFX.git"
+    }, 
 
       
   ],
