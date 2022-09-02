@@ -99,7 +99,7 @@ public:
 	void text(const String & s);
 
 	void drawString_getWh(const String & text, uint16_t & w, uint16_t & h);
-	void drawString(int16_t x, int16_t y, const String & text, uint16_t c, uint16_t bc, const GFXfont * font);
+	uint16_t drawString(int16_t x, int16_t y, const String & text, uint16_t c, uint16_t bc, const GFXfont * font);
 	void drawString(int16_t x, int16_t y, const String & text, uint16_t c, const GFXfont * font);
 	void drawString(const String & text);		
 	void drawString();		

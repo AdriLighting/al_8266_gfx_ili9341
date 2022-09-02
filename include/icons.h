@@ -19,7 +19,7 @@
 	// extern const unsigned char meteoIcon [] PROGMEM ;
 	extern const unsigned char settingsBitmap [] PROGMEM;
 	// extern const unsigned char hpBitmap [] PROGMEM ;
-	// extern const unsigned char wifi25Bitmap [] PROGMEM ;
+	extern const unsigned char wifi25Bitmap [] PROGMEM ;
 	// extern const unsigned char exitBitmap [] PROGMEM ;
 	// extern const unsigned char retour_1Bitmap [] PROGMEM ;
 	// extern const unsigned char retour_2Bitmap [] PROGMEM ;

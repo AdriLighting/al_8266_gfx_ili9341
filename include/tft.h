@@ -5,6 +5,7 @@
 
 	// #ifdef ALML_TFT Serial.printf_P(PSTR("[al_sensosApi::httpget] get_httpdata code: %d\n"), code);
 		#include "tfttxt.h"
+		#include "tftbutton.h"
 	  #include "icons.h"
 	  #include "fonts/ArialRoundedMTBold_10.h"
 	  #include "fonts/ArialRoundedMTBold_11.h"
@@ -38,6 +39,7 @@
 		uint8_t 	_pin_xpt2406_cs		= 0;	
 		uint8_t 	_pin_xpt2406_irq	= 0;	
 		uint8_t 	_mod_touch				= 0;	
+		uint8_t 	_mod_calibration	= 0;	
   } al_gfx_data_t;
 
 	class al_gfx_xpt2406 {

@@ -96,7 +96,7 @@ void Tft_txt::drawString(int16_t x, int16_t y, const String & text, uint16_t c, 
   _tft->setCursor(x, y);
   _tft->print(text);
 }
-void Tft_txt::drawString(int16_t x, int16_t y, const String & text, uint16_t c, uint16_t bc, const GFXfont * font) {
+uint16_t Tft_txt::drawString(int16_t x, int16_t y, const String & text, uint16_t c, uint16_t bc, const GFXfont * font) {
   _tc   = c;
   _bc   = bc;
   _font   = font;
@@ -121,7 +121,38 @@ void Tft_txt::drawString(int16_t x, int16_t y, const String & text, uint16_t c, 
   _tft->fillRect(x, y - h -1, w + 1, h + 4, _bc);
   _tft->setCursor(x, y);
   _tft->print(text);
+  return y + h;
 }
+/*
+void Tft_txt::drawStringReverse(int16_t x, int16_t y, const String & text, uint16_t c, uint16_t bc, const GFXfont * font) {
+  _tc   = c;
+  _bc   = bc;
+  _font   = font;
+  _text   = text;                         
+  _tft->setTextColor(_tc, _bc);
+  _tft->setFont(_font);
+  uint16_t w, h;
+  drawString_getWh(text, w, h);
+  switch (_alignment) {
+    case LEFT:
+      x = x;
+      break;
+    case CENTER:
+      x = x - w / 2;
+      break;
+    case RIGHT:
+      x = x - w;
+      break;
+  } 
+  _text_x = x;
+  _text_y = y;  
+
+  // _tft->fillRect(x, y - h -1, w + 1, h + 4, _bc);
+  // _tft->setCursor(x, y);
+  // _tft->print(text);
+
+}
+*/
 void Tft_txt::drawStringAling(const String & text, TextAlignment pos) {
   _tft->setFont(_font);
 

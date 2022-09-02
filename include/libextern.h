@@ -25,8 +25,15 @@
 
 #include <SPI.h>
 
+
 #include <Adafruit_I2CDevice.h>
-#include <Adafruit_ILI9341esp.h> 
+
+#if defined(ESP8266)
+  #include <Adafruit_ILI9341esp.h> 
+#elif defined(ESP32)
+  #include <Adafruit_ILI9341.h>
+#endif
+
 // #include <Adafruit_I2CDevice.h>
 #include <Adafruit_GFX.h>
 #include <XPT2046.h>

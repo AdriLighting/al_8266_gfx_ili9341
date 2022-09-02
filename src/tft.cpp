@@ -63,7 +63,7 @@ void al_gfx_xpt2406::begin(JsonObject & root){
 
   switch (_mod_calibration) {
     case calibration_t::CALIBR_LAUNCH: 
-    	calibrate( _algfxili_tft,  _algfx_touch); 
+    	calibrate( _algfxili_tft,  _algfx_touch);
     break;
     case calibration_t::CALIBR_SETUP: 
     case calibration_t::CALIBR_FS: 		
@@ -143,6 +143,7 @@ boolean al_gfx_ili9341::config_loadDevice() {
 	_config.clear();_config.garbageCollect();
 
 	DeserializationError error = deserializeJson(_config, f);
+
 	if (!error) {
 		#ifdef ALT_DEBUG_TARCE
 			serializeJsonPretty(_config, Serial);Serial.println();	
@@ -152,13 +153,21 @@ boolean al_gfx_ili9341::config_loadDevice() {
 	  _pin_dc 					= _config[F("TFT")][F("pin_dc")].as<uint8_t>();
 	  _pin_xpt2406_cs 	= _config[F("TFT")][F("pin_xpt2406_cs")].as<uint8_t>();
 	  _pin_xpt2406_irq 	= _config[F("TFT")][F("pin_xpt2406_irq")].as<uint8_t>();
+
+		_rotationDir = _config[F("TFT")][F("rotationDir")];
+		ALT_TRACEC("main", "&c:1&s:\t%-25sto %d\n", "set _rotationDir", _rotationDir);
+	  
 		set_modTouch(_config[F("TFT")][F("mod_touch")].as<uint8_t>());
+		ALT_TRACEC("main", "&c:1&s:\t%-25sto %d\n", "set _mod_touch", _mod_touch);
 
 	  _algfxili_tft			= new Adafruit_ILI9341(_pin_cs, _pin_dc);
+
 	  if (_mod_touch == touch_t::TOUCH_ENABLED) {
 	  	ALT_TRACEC("main", "&c:1&s:\tnew instance of: XPT2046 && al_gfx_xpt2406\n");
 		  _algfx_touch 			= new XPT2046(/*cs=*/ _pin_xpt2406_cs, /*irq=*/ _pin_xpt2406_irq);	
 		  _al_gfx_xpt2406		= new al_gfx_xpt2406();	
+		  set_calibrationMod(_config[F("TFT")][F("TOUCH")][F("mod_calibration")].as<uint8_t>());
+			ALT_TRACEC("main", "&c:1&s:\t%-25sto %d\n", "set _mod_calibration", _al_gfx_xpt2406->get_calibrationMod());			
 	  }
 
 
@@ -255,6 +264,7 @@ boolean al_gfx_ili9341::config_sav(al_gfx_data_t * data) {
   xptobj[F("y1")] = data->_calibr_y1;
   xptobj[F("x2")]	= data->_calibr_x2;
   xptobj[F("y2")]	= data->_calibr_y2;  
+  xptobj[F("mod_calibration")] = data->_mod_calibration;  
   serializeJson(_config, f);
   f.close();
 	return true;	
@@ -283,7 +293,7 @@ boolean al_gfx_ili9341::config_sav() {
 	  xptobj[F("y1")] = y1;
 	  xptobj[F("x2")]	= x2;
 	  xptobj[F("y2")]	= y2;  
-	  xptobj[F("mod_calibration")]	= _al_gfx_xpt2406->get_calibrationMod();
+	  xptobj[F("mod_calibration")] = _al_gfx_xpt2406->get_calibrationMod();
 	}
   serializeJson(_config, f);
   f.close();
@@ -306,6 +316,7 @@ void al_gfx_ili9341::begin(){
   if (_mod_touch == touch_t::TOUCH_ENABLED) {
   	JsonObject obj = _config[F("TFT")][F("TOUCH")];
   	_al_gfx_xpt2406->begin(obj);
+   	set_calibrationMod(1);
   }
 
   _algfxili_tft->setRotation(_rotationDir);
@@ -369,9 +380,9 @@ void al_gfx_ili9341::drawBmp(Adafruit_ILI9341 * _tft, const String & filename, u
 
 	if((x >= _tft->width()) || (y >= _tft->height())) return;
 	#if defined(ESP8266)
-		bmpFile = LittleFS.open(filename, "r");
+		bmpFile = FILESYSTEM.open(filename, "r");
 	#elif defined(ESP32)
-		bmpFile = SPIFFS.open(filename, "r");
+		bmpFile = FILESYSTEM.open(filename, "r");
 	#else
 	#endif    		
 	
