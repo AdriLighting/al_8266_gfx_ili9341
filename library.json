@@ -52,11 +52,8 @@
         "owner": "oliver",
         "name": "U8g2_for_Adafruit_GFX",
         "version": "https://github.com/olikraus/U8g2_for_Adafruit_GFX.git"
-    }, 
-
-      
+    }
   ],
-   
   "frameworks": "arduino",
   "platforms": "espressif8266",
   "headers": "almllib.h"
