@@ -29,6 +29,25 @@
 
 #include <ArduinoJson.h>
 
+
+#ifndef ALT_DEFINE_DEFAULT
+  #ifndef FSOK
+    #define FSOK
+  #endif
+  #ifndef USE_LITTLEF
+    #define USE_LITTLEF
+  #endif
+  #ifndef FILESYSTEM
+    #if defined(ESP8266)
+      #include <LittleFS.h> 
+      #define FILESYSTEM LittleFS  
+    #elif defined(ESP32)
+      #include <FS.h>
+      #include <LITTLEFS.h>
+      #define FILESYSTEM LittleFS
+    #endif
+  #endif
+#endif
 #ifdef FILESYSTEM 
   #if defined USE_LITTLEFS
     #if defined(ESP8266)
