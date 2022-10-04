@@ -181,7 +181,7 @@ boolean al_gfx_ili9341::config_loadDevice() {
 		_rotationDir = _config[F("TFT")][F("rotationDir")];
 		ALT_TRACEC("main", "&c:1&s:\t%-25sto %d\n", "set _rotationDir", _rotationDir);
 	  
-		set_modTouch(_config[F("TFT")][F("mod_touch")].as<uint8_t>());
+		 if (_mod_touch == touch_t::TOUCH_ENABLED) set_modTouch(_config[F("TFT")][F("mod_touch")].as<uint8_t>());
 		ALT_TRACEC("main", "&c:1&s:\t%-25sto %d\n", "set _mod_touch", _mod_touch);
 
 	  _algfxili_tft			= new Adafruit_ILI9341(_pin_cs, _pin_dc);
@@ -222,7 +222,7 @@ boolean al_gfx_ili9341::config_read() {
 		_rotationDir = _config[F("TFT")][F("rotationDir")];
 		ALT_TRACEC("main", "&c:1&s:\t%-25sto %d\n", "set _rotationDir", _rotationDir);
 
-		set_modTouch(_config[F("TFT")][F("mod_touch")].as<uint8_t>());
+		 if (_mod_touch == touch_t::TOUCH_ENABLED) set_modTouch(_config[F("TFT")][F("mod_touch")].as<uint8_t>());
 		ALT_TRACEC("main", "&c:1&s:\t%-25sto %d\n", "set _mod_touch", _mod_touch);
 
 		if (_mod_touch == touch_t::TOUCH_ENABLED){

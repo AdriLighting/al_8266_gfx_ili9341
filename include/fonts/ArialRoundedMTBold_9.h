@@ -201,7 +201,7 @@ const GFXglyph c__windows_Fonts_ARLRDBD9pt7bGlyphs[] PROGMEM = {
   {  1228,   6,  17,   7,    0,  -12 },   // 0x7D '}'
   {  1241,   9,   3,  11,    1,   -7 } }; // 0x7E '~'
 
-const GFXfont c__windows_Fonts_ARLRDBD9pt7b PROGMEM = {
+const GFXfont ArialRoundedMTBold_9 PROGMEM = {
   (uint8_t  *)c__windows_Fonts_ARLRDBD9pt7bBitmaps,
   (GFXglyph *)c__windows_Fonts_ARLRDBD9pt7bGlyphs,
   0x20, 0x7E, 21 };

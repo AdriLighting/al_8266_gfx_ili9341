@@ -31,6 +31,7 @@
 		#include "tfttxt.h"
 		#include "tftbutton.h"
 	  #include "icons.h"
+	  #include "fonts/ArialRoundedMTBold_9.h"
 	  #include "fonts/ArialRoundedMTBold_10.h"
 	  #include "fonts/ArialRoundedMTBold_11.h"
 	  #include "fonts/ArialRoundedMTBold_12.h"
